@@ -1,7 +1,7 @@
 {
   "name": "donate-telegram-webapp",
   "private": false,
-  "homepage": "https://{username}.github.io",
+  "homepage": "https://oleksandrbezditny.github.io",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
