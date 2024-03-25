@@ -25,6 +25,12 @@ export default {
 }
 ```
 
+To run telegram bot run the next command:
+```
+node bot.js
+```
+If you don't have NodeJS installed visit the official site - [NodeJS official site](https://nodejs.org/en)
+
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list

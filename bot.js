@@ -1,7 +1,7 @@
 import {Telegraf, Markup} from 'telegraf';
 
 const token = '6852025342:AAEE2KUjCfuVqRNqwOPL9LeaTj19oDWvjc4';
-const webAppUrl = 'https://google.com/';
+const webAppUrl = 'https://oleksandrbezditny.github.io/donate-telegram-webapp/';
 
 const bot = new Telegraf(token);
 
