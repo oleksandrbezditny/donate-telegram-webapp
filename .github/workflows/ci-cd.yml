@@ -22,5 +22,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages  # The branch where the built content will be deployed
-          folder: build     # The folder containing the built React app content
+          folder: dist     # The folder containing the built React app content
           token: ${{ secrets.GITHUB_TOKEN }}  # Access token with deploy permission (see next step)
