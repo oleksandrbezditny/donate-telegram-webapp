@@ -22,13 +22,15 @@ export default {
     project: ['./tsconfig.json', './tsconfig.node.json'],
     tsconfigRootDir: __dirname,
   },
-}
+};
 ```
 
 To run telegram bot run the next command:
+
 ```
 node bot.js
 ```
+
 If you don't have NodeJS installed visit the official site - [NodeJS official site](https://nodejs.org/en)
 
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
