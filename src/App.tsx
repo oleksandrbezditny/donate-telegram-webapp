@@ -1,8 +1,8 @@
-import './App.css';
 import { LanguageProvider } from './i18n';
 import { LanguageSelector, Voucher } from './components';
 import { FormattedMessage } from 'react-intl';
 import './App.scss';
+import { Popup } from './components/Popup';
 
 function App() {
   return (
@@ -16,6 +16,12 @@ function App() {
         </div>
         <div style={{ width: '300px', height: '400px' }}>
           <Voucher />
+        </div>
+
+        <div style={{ width: '500px', height: '400px' }}>
+          <Popup>
+            <div>Some content</div>
+          </Popup>
         </div>
       </LanguageProvider>
     </>

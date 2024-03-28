@@ -19,17 +19,16 @@
 }
 
 .cover {
-
   width: 100%;
   height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
-  transition: transform .4s cubic-bezier(.17,.67,.13,1.02);
-  background-image: url("https://i.getgems.io/ZL-3inLrG-6zgiOOfokQwZnsNc9PxfCjYBQpMYNVkQk/rs:fill:500:500:1/g:ce/czM6Ly9nZXRnZW1zLXMzL25mdC1jb250ZW50LWNhY2hlL2ltYWdlcy9FUURta2o2NUFiX20wYVphVzhJcEt3NGtZcUlnSVR3X0hSc3RZRWtWUTZOSVlDeVcvYzA5MWZiMzlmMDMyNzIxNw");
+  transition: transform 0.4s cubic-bezier(0.17, 0.67, 0.13, 1.02);
+  background-image: url('https://i.getgems.io/ZL-3inLrG-6zgiOOfokQwZnsNc9PxfCjYBQpMYNVkQk/rs:fill:500:500:1/g:ce/czM6Ly9nZXRnZW1zLXMzL25mdC1jb250ZW50LWNhY2hlL2ltYWdlcy9FUURta2o2NUFiX20wYVphVzhJcEt3NGtZcUlnSVR3X0hSc3RZRWtWUTZOSVlDeVcvYzA5MWZiMzlmMDMyNzIxNw');
 
   &:hover {
     transform: scale(1.1);
-    transition: transform 0.3s ease-in-out;  /* Optional: smoother transition */
+    transition: transform 0.3s ease-in-out; /* Optional: smoother transition */
   }
 }
 
