@@ -4,7 +4,6 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
   border-radius: 16px;
   background: #1a1a1a;
 }
@@ -15,10 +14,18 @@
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 75%;
+
+  &::after {
+    content: "";
+    display: block;
+    padding-top: 100%;
+  }
 }
 
 .cover {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background-size: cover;

@@ -10,6 +10,7 @@ const LanguageContext = createContext<LanguageContextProps | null>(null);
 
 const LanguageProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [language, setLanguage] = useState<Language | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const storedLanguage = localStorage.getItem(LocalStorageKey);
@@ -19,6 +20,7 @@ const LanguageProvider: FC<{ children: ReactNode }> = ({ children }) => {
     } else {
       setLanguage({ code: defaultLanguageCode, locale: defaultLanguageCode, data: messages.en });
     }
+    setIsLoading(false);
   }, []);
 
   const selectLanguage = useCallback((code: LanguageCode) => {
@@ -34,9 +36,13 @@ const LanguageProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   return (
     <LanguageContext.Provider value={value}>
-      <IntlProvider locale={language?.locale ?? defaultLanguageCode} messages={language?.data}>
-        {children}
-      </IntlProvider>
+      {isLoading ? (
+        <div>Loading language...</div>
+      ) : (
+        <IntlProvider locale={language?.locale ?? defaultLanguageCode} messages={language?.data}>
+          {children}
+        </IntlProvider>
+      )}
     </LanguageContext.Provider>
   );
 };

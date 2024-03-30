@@ -1,27 +1,47 @@
 import { LanguageProvider } from './i18n';
-import { LanguageSelector, Voucher } from './components';
-import { FormattedMessage } from 'react-intl';
-import './App.scss';
+import { LanguageSelector } from './components';
 import { Popup } from './components/Popup';
+import { useCallback, useState } from 'react';
+import { VoucherList } from './components/VoucherList';
+import styles from './App.module.scss';
 
 function App() {
+  const [popupOpened, setPopupOpened] = useState(false);
+
+  const onPopupSuccess = useCallback(() => {
+    alert('success operation');
+    setPopupOpened(false);
+  }, []);
+
+  const onPopupReject = useCallback(() => {
+    setPopupOpened(false);
+  }, []);
+
+  const onVoucherSelect = useCallback((): void => {
+    setPopupOpened(true);
+  }, []);
+
   return (
     <>
       <LanguageProvider>
-        <div>
-          <LanguageSelector />
-          <h1>
-            <FormattedMessage id="greeting" />
-          </h1>
-        </div>
-        <div style={{ width: '300px', height: '400px' }}>
-          <Voucher />
-        </div>
+        <div className={styles.appRoot}>
+          <div>
+            <LanguageSelector />
+          </div>
+          <VoucherList onVoucherSelect={onVoucherSelect} />
 
-        <div style={{ width: '500px', height: '400px' }}>
-          <Popup>
-            <div>Some content</div>
-          </Popup>
+          {popupOpened ? (
+            <div style={{ width: '500px', height: '400px' }}>
+              <Popup
+                title="Some title example"
+                buttonText="Apply"
+                onSuccess={onPopupSuccess}
+                onReject={onPopupReject}
+              >
+                <div>Some content</div>
+              </Popup>
+            </div>
+          ) : null}
         </div>
       </LanguageProvider>
     </>
