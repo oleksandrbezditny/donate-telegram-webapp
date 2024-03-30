@@ -4,9 +4,13 @@ import { Popup } from './components/Popup';
 import { useCallback, useState } from 'react';
 import { VoucherList } from './components/VoucherList';
 import styles from './App.module.scss';
+import { useIntl } from 'react-intl';
 
 function App() {
   const [popupOpened, setPopupOpened] = useState(false);
+  const intl = useIntl();
+  const popupTitle = intl.formatMessage({ id: 'voucherPopupTitle' });
+  const popupButtonTitle = intl.formatMessage({ id: 'voucherPopupButtonTitle' });
 
   const onPopupSuccess = useCallback(() => {
     alert('success operation');
@@ -22,29 +26,25 @@ function App() {
   }, []);
 
   return (
-    <>
-      <LanguageProvider>
-        <div className={styles.appRoot}>
-          <div>
-            <LanguageSelector />
-          </div>
-          <VoucherList onVoucherSelect={onVoucherSelect} />
+    <div className={styles.appRoot}>
+      <div>
+        <LanguageSelector />
+      </div>
+      <VoucherList onVoucherSelect={onVoucherSelect} />
 
-          {popupOpened ? (
-            <div style={{ width: '500px', height: '400px' }}>
-              <Popup
-                title="Some title example"
-                buttonText="Apply"
-                onSuccess={onPopupSuccess}
-                onReject={onPopupReject}
-              >
-                <div>Some content</div>
-              </Popup>
-            </div>
-          ) : null}
+      {popupOpened ? (
+        <div className={styles.popupContainer}>
+          <Popup
+            title={popupTitle}
+            buttonText={popupButtonTitle}
+            onSuccess={onPopupSuccess}
+            onReject={onPopupReject}
+          >
+            <div>Some content</div>
+          </Popup>
         </div>
-      </LanguageProvider>
-    </>
+      ) : null}
+    </div>
   );
 }
 

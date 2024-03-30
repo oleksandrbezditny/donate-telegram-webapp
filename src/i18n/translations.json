@@ -1,8 +1,12 @@
 {
   "en": {
-    "greeting": "Hello!"
+    "greeting": "Hello!",
+    "voucherPopupTitle": "Popup header",
+    "voucherPopupButtonTitle": "Popup button"
   },
   "ru": {
-    "greeting": "Привет!"
+    "greeting": "Привет!",
+    "voucherPopupTitle": "Хедер попапа",
+    "voucherPopupButtonTitle": "Кнопка попапа"
   }
 }
