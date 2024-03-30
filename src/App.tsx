@@ -4,6 +4,7 @@ import { useCallback, useState } from 'react';
 import { VoucherList } from './components/VoucherList';
 import styles from './App.module.scss';
 import { useIntl } from 'react-intl';
+import { Loader } from './components/Loader';
 
 function App() {
   const [popupOpened, setPopupOpened] = useState(false);
@@ -26,9 +27,8 @@ function App() {
 
   return (
     <div className={styles.appRoot}>
-      <div>
-        <LanguageSelector />
-      </div>
+      <Loader display={false} />
+      <LanguageSelector />
       <VoucherList onVoucherSelect={onVoucherSelect} />
 
       {popupOpened ? (
