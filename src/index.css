@@ -16,6 +16,8 @@
 #root {
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 a {
@@ -35,7 +37,7 @@ body {
     min-width: 320px;
     max-width: 100vw;
     overflow-x: hidden;
-    min-height: 100vh;
+    height: 100vh;
     font-family: 'Inter',
     -apple-system,
     BlinkMacSystemFont,
