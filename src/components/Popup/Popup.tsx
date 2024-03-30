@@ -18,9 +18,8 @@ export const Popup: FC<PopupProps> = ({ children, title, buttonText, onSuccess, 
             <div className={styles.body}>
               <div className={styles.content}>
                 <div className={styles.title}>{title}</div>
-                <div className={styles.inner}>
-                  {children}
-
+                <div>
+                  <div className={styles.inner}>{children}</div>
                   <div>
                     <button className={styles.button}>
                       <div className={styles.buttonInner}>

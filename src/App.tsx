@@ -1,4 +1,3 @@
-import { LanguageProvider } from './i18n';
 import { LanguageSelector } from './components';
 import { Popup } from './components/Popup';
 import { useCallback, useState } from 'react';
