@@ -2,6 +2,7 @@ import { FC, ReactNode, createContext, useState, useEffect, useMemo, useCallback
 import { IntlProvider } from 'react-intl';
 import { Language, LanguageCode, LanguageContextProps } from './types.ts';
 import messages from './translations.json';
+import { Locales, useTonConnectUI } from '@tonconnect/ui-react';
 
 const LocalStorageKey = 'language';
 const defaultLanguageCode: LanguageCode = 'en';
@@ -11,26 +12,41 @@ const LanguageContext = createContext<LanguageContextProps | null>(null);
 const LanguageProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [language, setLanguage] = useState<Language | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [_, setOptions] = useTonConnectUI();
+
+  const updateLanguage = useCallback(
+    (language: Language) => {
+      setLanguage(language);
+
+      setOptions({
+        language: language.code as Locales,
+      });
+    },
+    [setOptions, setLanguage]
+  );
 
   useEffect(() => {
     const storedLanguage = localStorage.getItem(LocalStorageKey);
     if (storedLanguage) {
       const parsedLanguage = JSON.parse(storedLanguage);
-      setLanguage({ ...parsedLanguage, locale: parsedLanguage.code });
+      updateLanguage({ ...parsedLanguage, locale: parsedLanguage.code });
     } else {
-      setLanguage({ code: defaultLanguageCode, locale: defaultLanguageCode, data: messages.en });
+      updateLanguage({ code: defaultLanguageCode, locale: defaultLanguageCode, data: messages.en });
     }
     setIsLoading(false);
-  }, []);
+  }, [updateLanguage]);
 
-  const selectLanguage = useCallback((code: LanguageCode) => {
-    const languageData = messages[code];
+  const selectLanguage = useCallback(
+    (code: LanguageCode) => {
+      const languageData = messages[code];
 
-    if (languageData) {
-      setLanguage({ code, locale: code, data: languageData });
-      localStorage.setItem(LocalStorageKey, JSON.stringify({ code, data: languageData }));
-    }
-  }, []);
+      if (languageData) {
+        updateLanguage({ code, locale: code, data: languageData });
+        localStorage.setItem(LocalStorageKey, JSON.stringify({ code, data: languageData }));
+      }
+    },
+    [updateLanguage]
+  );
 
   const value = useMemo(() => ({ language, selectLanguage }), [language, selectLanguage]);
 
