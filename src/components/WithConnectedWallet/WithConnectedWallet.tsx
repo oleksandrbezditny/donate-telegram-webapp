@@ -2,6 +2,7 @@ import { FC, useState } from 'react';
 
 import { AvailableVouchersList } from '../AvailableVouchersList/AvailableVouchersList.tsx';
 import { Tabs, TabsProps } from '../Tabs';
+import { SoldVoucherList } from '../SoldVouchersList';
 
 export const WithConnectedWallet: FC = () => {
   const [tabs] = useState<TabsProps['tabs']>([
@@ -11,7 +12,7 @@ export const WithConnectedWallet: FC = () => {
     },
     {
       label: 'Sold vouchers',
-      content: <AvailableVouchersList />,
+      content: <SoldVoucherList />,
     },
   ]);
 

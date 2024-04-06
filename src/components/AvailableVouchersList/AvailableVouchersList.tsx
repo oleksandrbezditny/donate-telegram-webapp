@@ -3,6 +3,16 @@ import { VoucherList } from '../VoucherList';
 import styles from './AvailableVouchersList.module.scss';
 import { Popup } from '../Popup';
 import { useIntl } from 'react-intl';
+import { VoucherEntity } from '../Voucher';
+
+const vouchersMock: VoucherEntity[] = [
+  {
+    price: 100500,
+  },
+  {
+    price: 100400,
+  },
+];
 
 export type AvailableVouchersListProps = Readonly<{}>;
 
@@ -27,7 +37,7 @@ export const AvailableVouchersList: FC<AvailableVouchersListProps> = () => {
 
   return (
     <>
-      <VoucherList onVoucherSelect={onVoucherSelect} />
+      <VoucherList onVoucherSelect={onVoucherSelect} vouchers={vouchersMock} />
       {popupOpened ? (
         <div className={styles.popupContainer}>
           <Popup
