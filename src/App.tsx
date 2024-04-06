@@ -1,19 +1,16 @@
-import { AuthorizedPage } from './components/AuthorizedPage';
-import { useCallback, useState } from 'react';
-import { UnauthorizedPage } from './components/UnauthorizedPage/UnauthorizedPage.tsx';
+import { WithConnectedWallet } from './components/WithConnectedWallet';
+import { WalletView } from './components/WalletView/WalletView.tsx';
 import { LanguageSelector } from './components';
+import { useTonWallet } from '@tonconnect/ui-react';
 
 function App() {
-  const [authorized, setAuthorized] = useState(false);
-
-  const onAuthorization = useCallback(() => {
-    setAuthorized(true);
-  }, [setAuthorized]);
+  const wallet = useTonWallet();
 
   return (
     <>
       <LanguageSelector />
-      {authorized ? <AuthorizedPage /> : <UnauthorizedPage onAuthorize={onAuthorization} />}
+      <WalletView />
+      {wallet && <WithConnectedWallet />}
     </>
   );
 }

@@ -2,9 +2,9 @@ import { FC, useCallback, useState } from 'react';
 import { VoucherList } from '../VoucherList';
 import { Popup } from '../Popup';
 import { useIntl } from 'react-intl';
-import styles from './AuthorizedPage.module.scss';
+import styles from './WithConnectedWallet.module.scss';
 
-export const AuthorizedPage: FC = () => {
+export const WithConnectedWallet: FC = () => {
   const [popupOpened, setPopupOpened] = useState(false);
   const intl = useIntl();
   const popupTitle = intl.formatMessage({ id: 'voucherPopupTitle' });
