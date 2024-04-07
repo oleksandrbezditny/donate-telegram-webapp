@@ -1,55 +1,50 @@
 import { FC, useCallback, useState } from 'react';
 import { VoucherList } from '../VoucherList';
 import styles from './AvailableVouchersList.module.scss';
-import { Popup } from '../Popup';
-import { useIntl } from 'react-intl';
 import { VoucherEntity } from '../Voucher';
+import { SellVoucherPopup } from '../SellVoucherPopup';
 
 const vouchersMock: VoucherEntity[] = [
   {
     id: 1,
+    price: 10000000,
   },
   {
     id: 2,
+    price: 10000000,
   },
 ];
 
 export type AvailableVouchersListProps = Readonly<{}>;
 
 export const AvailableVouchersList: FC<AvailableVouchersListProps> = () => {
-  const [popupOpened, setPopupOpened] = useState(false);
-  const intl = useIntl();
-  const popupTitle = intl.formatMessage({ id: 'voucherPopupTitle' });
-  const popupButtonTitle = intl.formatMessage({ id: 'voucherPopupButtonTitle' });
+  const [selectedVoucher, setSelectedVoucher] = useState<VoucherEntity | undefined>(undefined);
 
   const onPopupSuccess = useCallback(() => {
     alert('success operation');
-    setPopupOpened(false);
+    setSelectedVoucher(undefined);
   }, []);
 
   const onPopupReject = useCallback(() => {
-    setPopupOpened(false);
+    setSelectedVoucher(undefined);
   }, []);
 
-  const onVoucherSelect = useCallback((): void => {
-    setPopupOpened(true);
+  const onVoucherSelect = useCallback((voucher: VoucherEntity): void => {
+    setSelectedVoucher(voucher);
   }, []);
 
   return (
     <>
       <VoucherList onVoucherSelect={onVoucherSelect} vouchers={vouchersMock} />
-      {popupOpened ? (
+      {selectedVoucher && (
         <div className={styles.popupContainer}>
-          <Popup
-            title={popupTitle}
-            buttonText={popupButtonTitle}
-            onSuccess={onPopupSuccess}
-            onReject={onPopupReject}
-          >
-            <div>Some content</div>
-          </Popup>
+          <SellVoucherPopup
+            forVoucher={selectedVoucher}
+            onPopupReject={onPopupReject}
+            onPopupSuccess={onPopupSuccess}
+          />
         </div>
-      ) : null}
+      )}
     </>
   );
 };

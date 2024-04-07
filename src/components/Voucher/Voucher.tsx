@@ -4,6 +4,7 @@ import { useIntl } from 'react-intl';
 
 export type VoucherEntity = Readonly<{
   id: number;
+  price: number;
 }>;
 
 export type VoucherProps = Readonly<{
