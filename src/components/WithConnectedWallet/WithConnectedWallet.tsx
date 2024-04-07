@@ -8,11 +8,11 @@ import styles from './WithConnectedWallet.module.scss';
 export const WithConnectedWallet: FC = () => {
   const [tabs] = useState<TabsProps['tabs']>([
     {
-      label: 'active-vouchers',
+      label: 'activeVouchers',
       content: <AvailableVouchersList />,
     },
     {
-      label: 'sold-vouchers',
+      label: 'soldVouchers',
       content: <SoldVoucherList />,
     },
   ]);

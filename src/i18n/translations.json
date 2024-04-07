@@ -4,15 +4,23 @@
     "voucherPopupTitle": "Popup header",
     "voucherPopupButtonTitle": "Put on sell",
     "voucherTitle": "Notcoin voucher",
-    "active-vouchers": "Active vouchers",
-    "sold-vouchers": "Sold vouchers"
+    "activeVouchers": "Active vouchers",
+    "soldVouchers": "Sold vouchers",
+    "sellVoucherNumberField": "Select amount",
+    "creatorRoyalty": "Creator royalty (95%)",
+    "serviceFee": "Service fee (5%)",
+    "youReceive": "You receive - nothing"
   },
   "ru": {
     "greeting": "Привет!",
     "voucherPopupTitle": "Хедер попапа",
     "voucherPopupButtonTitle": "Выставить на продажу",
     "voucherTitle": "Notcoin ваучер",
-    "active-vouchers": "Активные vouchers",
-    "sold-vouchers": "Проданные vouchers"
+    "activeVouchers": "Активные vouchers",
+    "soldVouchers": "Проданные vouchers",
+    "sellVoucherNumberField": "Выберите колличество",
+    "creatorRoyalty": "Creator royalty (95%)",
+    "serviceFee": "Плата за обслуживание (5%)",
+    "youReceive": "Вы получаете - ничего"
   }
 }

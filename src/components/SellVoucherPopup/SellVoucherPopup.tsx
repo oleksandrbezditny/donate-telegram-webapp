@@ -18,6 +18,11 @@ export const SellVoucherPopup: FC<SellVoucherPopupProps> = ({
   const intl = useIntl();
   const popupTitle = intl.formatMessage({ id: 'voucherPopupTitle' });
   const popupButtonTitle = intl.formatMessage({ id: 'voucherPopupButtonTitle' });
+  const numberFieldTitle = intl.formatMessage({ id: 'sellVoucherNumberField' });
+  const serviceFeeText = intl.formatMessage({ id: 'serviceFee' });
+  const creatorRoyaltyText = intl.formatMessage({ id: 'creatorRoyalty' });
+  const youReceiveText = intl.formatMessage({ id: 'youReceive' });
+
   const [selectedPrice, setSelectedPrice] = useState(0);
 
   const onPopupSuccessHandler = useCallback(() => {
@@ -41,12 +46,18 @@ export const SellVoucherPopup: FC<SellVoucherPopupProps> = ({
           value={selectedPrice}
           max={forVoucher.price}
           onChange={setSelectedPrice}
-          title="Select amount"
-          placeholder="select amount"
+          title={numberFieldTitle}
+          placeholder={numberFieldTitle}
         />
-        <div>service fee (5%) - {(selectedPrice * 0.05).toFixed(2)}</div>
-        <div>creator royalty (95%) - {(selectedPrice * 0.95).toFixed(2)}</div>
-        <div>you receive - nothing</div>
+        <div>
+          <p>{serviceFeeText}</p> - {(selectedPrice * 0.05).toFixed(2)}
+        </div>
+        <div>
+          <p>{creatorRoyaltyText}</p> - {(selectedPrice * 0.95).toFixed(2)}
+        </div>
+        <div>
+          <p>{youReceiveText}</p>
+        </div>
       </div>
     </Popup>
   );
