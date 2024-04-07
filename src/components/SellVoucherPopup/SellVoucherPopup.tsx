@@ -3,6 +3,7 @@ import { Popup } from '../Popup';
 import { useIntl } from 'react-intl';
 import { VoucherEntity } from '../Voucher';
 import { NumberField } from '../NumberField';
+import styles from './SellVoucherPopup.module.scss';
 
 export type SellVoucherPopupProps = Readonly<{
   onPopupSuccess: () => void;
@@ -26,7 +27,6 @@ export const SellVoucherPopup: FC<SellVoucherPopupProps> = ({
   const [selectedPrice, setSelectedPrice] = useState(0);
 
   const onPopupSuccessHandler = useCallback(() => {
-    alert('success operation');
     onPopupSuccess();
   }, [onPopupSuccess]);
 
@@ -41,21 +41,24 @@ export const SellVoucherPopup: FC<SellVoucherPopupProps> = ({
       onSuccess={onPopupSuccessHandler}
       onReject={onPopupRejectHandler}
     >
-      <div>
-        <NumberField
-          value={selectedPrice}
-          max={forVoucher.price}
-          onChange={setSelectedPrice}
-          title={numberFieldTitle}
-          placeholder={numberFieldTitle}
-        />
-        <div>
-          <p>{serviceFeeText}</p> - {(selectedPrice * 0.05).toFixed(2)}
+      <div className={styles.container}>
+        <div className={styles.item}>
+          <NumberField
+            value={selectedPrice}
+            max={forVoucher.price}
+            onChange={setSelectedPrice}
+            title={numberFieldTitle}
+            placeholder={numberFieldTitle}
+          />
         </div>
-        <div>
-          <p>{creatorRoyaltyText}</p> - {(selectedPrice * 0.95).toFixed(2)}
+
+        <div className={styles.item}>
+          <p>{serviceFeeText}</p> {(selectedPrice * 0.05).toFixed(2)}
         </div>
-        <div>
+        <div className={styles.item}>
+          <p>{creatorRoyaltyText}</p> {(selectedPrice * 0.95).toFixed(2)}
+        </div>
+        <div className={styles.item}>
           <p>{youReceiveText}</p>
         </div>
       </div>
