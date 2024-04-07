@@ -2,11 +2,13 @@
   "en": {
     "greeting": "Hello!",
     "voucherPopupTitle": "Popup header",
-    "voucherPopupButtonTitle": "Popup button"
+    "voucherPopupButtonTitle": "Popup button",
+    "voucherTitle": "Notcoin voucher"
   },
   "ru": {
     "greeting": "Привет!",
     "voucherPopupTitle": "Хедер попапа",
-    "voucherPopupButtonTitle": "Кнопка попапа"
+    "voucherPopupButtonTitle": "Кнопка попапа",
+    "voucherTitle": "Notcoin ваучер"
   }
 }

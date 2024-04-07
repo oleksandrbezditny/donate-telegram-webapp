@@ -4,19 +4,19 @@ import { VoucherEntity } from '../Voucher';
 
 const vouchersMock: VoucherEntity[] = [
   {
-    price: 100500,
+    id: 1,
   },
   {
-    price: 100400,
+    id: 2,
   },
   {
-    price: 100200,
+    id: 3,
   },
   {
-    price: 100100,
+    id: 4,
   },
   {
-    price: 100000,
+    id: 5,
   },
 ];
 

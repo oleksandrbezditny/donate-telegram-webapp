@@ -1,8 +1,9 @@
 import { FC, useCallback } from 'react';
 import styles from './Voucher.module.scss';
+import { useIntl } from 'react-intl';
 
 export type VoucherEntity = Readonly<{
-  price: number;
+  id: number;
 }>;
 
 export type VoucherProps = Readonly<{
@@ -14,6 +15,8 @@ export const Voucher: FC<VoucherProps> = ({ onSelect, voucher }) => {
   const onClick = useCallback(() => {
     onSelect(voucher);
   }, [onSelect, voucher]);
+  const intl = useIntl();
+  const voucherTitle = intl.formatMessage({ id: 'voucherTitle' });
 
   return (
     <>
@@ -22,7 +25,7 @@ export const Voucher: FC<VoucherProps> = ({ onSelect, voucher }) => {
           <div className={styles.cover}></div>
         </div>
         <div className={styles.info}>
-          <div className={styles.infoTitle}>{voucher.price}</div>
+          <div className={styles.infoTitle}>{voucherTitle}</div>
         </div>
       </div>
     </>
