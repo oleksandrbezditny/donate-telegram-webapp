@@ -3,12 +3,16 @@
     "greeting": "Hello!",
     "voucherPopupTitle": "Popup header",
     "voucherPopupButtonTitle": "Popup button",
-    "voucherTitle": "Notcoin voucher"
+    "voucherTitle": "Notcoin voucher",
+    "active-vouchers": "Active vouchers",
+    "sold-vouchers": "Sold vouchers"
   },
   "ru": {
     "greeting": "Привет!",
     "voucherPopupTitle": "Хедер попапа",
     "voucherPopupButtonTitle": "Кнопка попапа",
-    "voucherTitle": "Notcoin ваучер"
+    "voucherTitle": "Notcoin ваучер",
+    "active-vouchers": "Активные vouchers",
+    "sold-vouchers": "Проданные vouchers"
   }
 }

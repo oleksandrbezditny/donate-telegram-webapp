@@ -1,5 +1,6 @@
 import { FC, ReactNode, useState } from 'react';
 import styles from './Tabs.module.scss';
+import { FormattedMessage } from 'react-intl';
 
 export type TabsProps = Readonly<{
   tabs: {
@@ -24,7 +25,7 @@ export const Tabs: FC<TabsProps> = ({ tabs }) => {
             className={`${styles.tabsListItem} ${activeIndex === index ? styles.active : ''}`}
             onClick={() => handleClick(index)}
           >
-            {tab.label}
+            <FormattedMessage id={tab.label} />
           </li>
         ))}
       </ul>
