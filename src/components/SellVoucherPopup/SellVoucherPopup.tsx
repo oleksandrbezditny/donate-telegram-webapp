@@ -1,7 +1,8 @@
-import { FC, useCallback } from 'react';
+import { FC, useCallback, useState } from 'react';
 import { Popup } from '../Popup';
 import { useIntl } from 'react-intl';
 import { VoucherEntity } from '../Voucher';
+import { NumberField } from '../NumberField';
 
 export type SellVoucherPopupProps = Readonly<{
   onPopupSuccess: () => void;
@@ -9,10 +10,15 @@ export type SellVoucherPopupProps = Readonly<{
   forVoucher: VoucherEntity;
 }>;
 
-export const SellVoucherPopup: FC<SellVoucherPopupProps> = ({ onPopupSuccess, onPopupReject }) => {
+export const SellVoucherPopup: FC<SellVoucherPopupProps> = ({
+  onPopupSuccess,
+  onPopupReject,
+  forVoucher,
+}) => {
   const intl = useIntl();
   const popupTitle = intl.formatMessage({ id: 'voucherPopupTitle' });
   const popupButtonTitle = intl.formatMessage({ id: 'voucherPopupButtonTitle' });
+  const [selectedPrice, setSelectedPrice] = useState(0);
 
   const onPopupSuccessHandler = useCallback(() => {
     alert('success operation');
@@ -31,9 +37,16 @@ export const SellVoucherPopup: FC<SellVoucherPopupProps> = ({ onPopupSuccess, on
       onReject={onPopupRejectHandler}
     >
       <div>
-        <div>service fee (5%) - 100</div>
-        <div>creator royalty (100%)</div>
-        <div>you receive (100%)</div>
+        <NumberField
+          value={selectedPrice}
+          max={forVoucher.price}
+          onChange={setSelectedPrice}
+          title="Select amount"
+          placeholder="select amount"
+        />
+        <div>service fee (5%) - {(selectedPrice * 0.05).toFixed(2)}</div>
+        <div>creator royalty (95%) - {(selectedPrice * 0.95).toFixed(2)}</div>
+        <div>you receive - nothing</div>
       </div>
     </Popup>
   );
