@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, useEffect, useState } from 'react';
 import styles from './Popup.module.scss';
 import { useIntl } from 'react-intl';
 
@@ -25,12 +25,18 @@ export const Popup: FC<PopupProps> = ({
 }) => {
   const intl = useIntl();
   const _cancelTitle = cancelTitle ?? intl.formatMessage({ id: 'cancelTitle' });
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    setIsOpen(true);
+    return () => setIsOpen(false);
+  }, []);
 
   return (
     <div>
       <div className={styles.root}>
         <div className={styles.overlay}>
-          <div className={styles.wrapper}>
+          <div className={isOpen ? styles.popupOpen : styles.popupClosed}>
             <div className={styles.body}>
               <div className={styles.content}>
                 <div className={styles.title}>{title}</div>

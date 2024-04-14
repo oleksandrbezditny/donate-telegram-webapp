@@ -2,6 +2,22 @@
   color: #e6e6e6;
 }
 
+.popupOpen {
+  display: flex;
+  width: 100%;
+  cursor: default;
+  position: absolute;
+  bottom: 0;
+}
+
+.popupOpen {
+  animation: slideUp 0.3s ease-in-out forwards;
+}
+
+.popupClosed {
+  display: none;
+}
+
 .overlay {
   cursor: pointer;
   opacity: 1;
@@ -16,14 +32,6 @@
   background-color: rgba(19, 19, 20, 0.6);
   transition: opacity 167ms ease-out;
   animation: modal-fade-in 0.32s ease;
-}
-
-.wrapper {
-  display: flex;
-  width: 100%;
-  cursor: default;
-  position: absolute;
-  bottom: 0;
 }
 
 .body {
@@ -98,4 +106,15 @@
 
 .inner {
   padding: 10px 0 10px 0;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
