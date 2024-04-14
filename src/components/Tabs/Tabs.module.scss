@@ -2,27 +2,30 @@
   display: flex;
   flex-direction: column;
   background-color: #222;
-  color: #fff;
-  border-radius: 5px;
+  color: #151515;
 }
 
 .tabsList {
   list-style: none;
-  padding: 0;
-  margin: 0;
   display: flex;
+  padding: 0;
+  margin: 0 16px;
+  overflow: hidden;
+
+  border-radius: 8px;
 }
 
 .tabsListItem {
   padding: 10px 20px;
   cursor: pointer;
-  border-bottom: 1px solid #444;
   transition: background-color 0.2s ease-in-out;
+  background-color: #919191;
   width: 100%;
+  text-align: center;
 }
 
 .tabsListItem.active {
-  background-color: #333;
+  background-color: #e6e6e6;
 }
 
 .tabsContentItem.active {
@@ -31,4 +34,13 @@
 
 .tabsContentItem.hidden {
   display: none;
+}
+
+.purposeMessage {
+  text-align: center;
+  background-color: #383838;
+  color: #ffffff;
+  border-radius: 8px;
+  line-height: 48px;
+  margin: 32px 16px 0 16px;
 }

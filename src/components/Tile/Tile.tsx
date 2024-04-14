@@ -1,5 +1,5 @@
 import { FC, useCallback } from 'react';
-import styles from './Voucher.module.scss';
+import styles from './Tile.module.scss';
 
 export type TileProps = Readonly<{
   onSelect: () => void;

@@ -4,25 +4,27 @@
     "voucherPopupTitle": "Popup header",
     "voucherPopupButtonTitle": "Put on sell",
     "voucherTitle": "Notcoin voucher",
-    "activeVouchers": "Active vouchers",
-    "soldVouchers": "Sold vouchers",
+    "activeVouchers": "NFTs",
+    "soldVouchers": "NFTs on Sale",
     "sellVoucherNumberField": "Select amount",
     "creatorRoyalty": "Creator royalty (95%)",
     "serviceFee": "Service fee (5%)",
     "youReceive": "You receive - nothing",
-    "collections": "Collections"
+    "collections": "Collections",
+    "purpose": "What is the purpose of this?"
   },
   "ru": {
     "greeting": "Привет!",
     "voucherPopupTitle": "Хедер попапа",
     "voucherPopupButtonTitle": "Выставить на продажу",
     "voucherTitle": "Notcoin ваучер",
-    "activeVouchers": "Активные ваучеры",
-    "soldVouchers": "Проданные ваучеры",
+    "activeVouchers": "NFTs",
+      "soldVouchers": "NFTs на продаже",
     "sellVoucherNumberField": "Выберите колличество",
     "creatorRoyalty": "Creator royalty (95%)",
     "serviceFee": "Плата за обслуживание (5%)",
     "youReceive": "Вы получаете - ничего",
-    "collections": "Коллекции"
+    "collections": "Коллекции",
+    "purpose": "В чем смысл?"
   }
 }

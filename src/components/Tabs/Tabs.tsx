@@ -29,6 +29,9 @@ export const Tabs: FC<TabsProps> = ({ tabs }) => {
           </li>
         ))}
       </ul>
+      <div className={styles.purposeMessage}>
+        <FormattedMessage id="purpose" />
+      </div>
       <div>
         {tabs.map((item, index) => (
           <div
