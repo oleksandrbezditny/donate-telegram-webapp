@@ -24,7 +24,7 @@ export const SellVoucherPopup: FC<SellVoucherPopupProps> = ({
   const creatorRoyaltyText = intl.formatMessage({ id: 'creatorRoyalty' });
   const youReceiveText = intl.formatMessage({ id: 'youReceive' });
 
-  const [selectedPrice, setSelectedPrice] = useState(0);
+  const [selectedPrice, setSelectedPrice] = useState<number | undefined>(undefined);
 
   const onPopupSuccessHandler = useCallback(() => {
     onPopupSuccess();
@@ -38,28 +38,34 @@ export const SellVoucherPopup: FC<SellVoucherPopupProps> = ({
     <Popup
       title={popupTitle}
       buttonText={popupButtonTitle}
+      buttonDisabled={true}
       onSuccess={onPopupSuccessHandler}
       onReject={onPopupRejectHandler}
+      withCancelButton={true}
     >
       <div className={styles.container}>
-        <div className={styles.item}>
+        <div className={`${styles.item} ${styles.input}`}>
           <NumberField
             value={selectedPrice}
             max={forVoucher.price}
             onChange={setSelectedPrice}
-            title={numberFieldTitle}
             placeholder={numberFieldTitle}
           />
         </div>
 
-        <div className={styles.item}>
-          <p>{serviceFeeText}</p> {(selectedPrice * 0.05).toFixed(2)}
-        </div>
-        <div className={styles.item}>
-          <p>{creatorRoyaltyText}</p> {(selectedPrice * 0.95).toFixed(2)}
-        </div>
-        <div className={styles.item}>
-          <p>{youReceiveText}</p>
+        <div className={styles.details}>
+          <div className={styles.item}>
+            <p>{serviceFeeText}</p> {((selectedPrice ?? 0) * 0.05).toFixed(2)}
+          </div>
+          <div className={styles.item}>
+            <p>{creatorRoyaltyText}</p> {((selectedPrice ?? 0) * 0.95).toFixed(2)}
+          </div>
+          <div className={styles.item}>
+            <p>Transaction Fee (REST WILL BE RETURNED):</p> 10
+          </div>
+          <div className={styles.item}>
+            <p>{youReceiveText}</p> Something in the future
+          </div>
         </div>
       </div>
     </Popup>
