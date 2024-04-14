@@ -9,7 +9,8 @@
     "sellVoucherNumberField": "Select amount",
     "creatorRoyalty": "Creator royalty (95%)",
     "serviceFee": "Service fee (5%)",
-    "youReceive": "You receive - nothing"
+    "youReceive": "You receive - nothing",
+    "collections": "Collections"
   },
   "ru": {
     "greeting": "Привет!",
@@ -21,6 +22,7 @@
     "sellVoucherNumberField": "Выберите колличество",
     "creatorRoyalty": "Creator royalty (95%)",
     "serviceFee": "Плата за обслуживание (5%)",
-    "youReceive": "Вы получаете - ничего"
+    "youReceive": "Вы получаете - ничего",
+    "collections": "Коллекции"
   }
 }

@@ -1,8 +1,9 @@
 import { FC, useCallback, useState } from 'react';
 import { VoucherList } from '../VoucherList';
 import styles from './AvailableVouchersList.module.scss';
-import { VoucherEntity } from '../Voucher';
 import { SellVoucherPopup } from '../SellVoucherPopup';
+import { VoucherEntity } from '../../models';
+import { Collection } from '../../models/collection.ts';
 
 const vouchersMock: VoucherEntity[] = [
   {
@@ -15,7 +16,9 @@ const vouchersMock: VoucherEntity[] = [
   },
 ];
 
-export type AvailableVouchersListProps = Readonly<{}>;
+export type AvailableVouchersListProps = Readonly<{
+  collection: Collection;
+}>;
 
 export const AvailableVouchersList: FC<AvailableVouchersListProps> = () => {
   const [selectedVoucher, setSelectedVoucher] = useState<VoucherEntity | undefined>(undefined);

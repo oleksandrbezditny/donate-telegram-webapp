@@ -18,7 +18,6 @@ export const LanguageSelector: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <div>Language</div>
       <select
         className={styles.darkDropdown}
         value={language.code}

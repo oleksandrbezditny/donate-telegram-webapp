@@ -29,7 +29,7 @@ export const Tabs: FC<TabsProps> = ({ tabs }) => {
           </li>
         ))}
       </ul>
-      <div className={styles.tabsContent}>
+      <div>
         {tabs.map((item, index) => (
           <div
             key={index}

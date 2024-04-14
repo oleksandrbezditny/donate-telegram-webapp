@@ -1,6 +1,7 @@
 import { FC, useCallback } from 'react';
 import { VoucherList } from '../VoucherList';
-import { VoucherEntity } from '../Voucher';
+import { VoucherEntity } from '../../models';
+import { Collection } from '../../models/collection.ts';
 
 const vouchersMock: VoucherEntity[] = [
   {
@@ -25,7 +26,9 @@ const vouchersMock: VoucherEntity[] = [
   },
 ];
 
-export type SoldVoucherListProps = Readonly<{}>;
+export type SoldVoucherListProps = Readonly<{
+  collection: Collection;
+}>;
 
 export const SoldVoucherList: FC<SoldVoucherListProps> = () => {
   const onVoucherSelect = useCallback(() => {}, []);

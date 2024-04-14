@@ -1,19 +1,24 @@
 import { FC, useState } from 'react';
 
-import { AvailableVouchersList } from '../AvailableVouchersList/AvailableVouchersList.tsx';
+import { AvailableVouchersList } from '../AvailableVouchersList';
 import { Tabs, TabsProps } from '../Tabs';
 import { SoldVoucherList } from '../SoldVouchersList';
 import styles from './WithConnectedWallet.module.scss';
+import { Collection } from '../../models/collection.ts';
 
-export const WithConnectedWallet: FC = () => {
+export type WithSelectedCollectionProps = Readonly<{
+  collection: Collection;
+}>;
+
+export const WithSelectedCollection: FC<WithSelectedCollectionProps> = ({ collection }) => {
   const [tabs] = useState<TabsProps['tabs']>([
     {
       label: 'activeVouchers',
-      content: <AvailableVouchersList />,
+      content: <AvailableVouchersList collection={collection} />,
     },
     {
       label: 'soldVouchers',
-      content: <SoldVoucherList />,
+      content: <SoldVoucherList collection={collection} />,
     },
   ]);
 

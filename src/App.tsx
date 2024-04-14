@@ -1,16 +1,45 @@
-import { WithConnectedWallet } from './components/WithConnectedWallet';
 import { WalletView } from './components/WalletView/WalletView.tsx';
-import { LanguageSelector } from './components';
+import { CollectionList } from './components';
+import { BackButton, LanguageSelector, WithSelectedCollection } from './components';
 import { useTonWallet } from '@tonconnect/ui-react';
+import { useCallback, useState } from 'react';
+import { Collection } from './models/collection.ts';
+import styles from './App.module.scss';
 
 function App() {
   const wallet = useTonWallet();
+  const [selectedCollection, setSelectedCollection] = useState<Collection | undefined>(undefined);
+
+  const onCollectionSelectHandler = useCallback(
+    (collection: Collection) => {
+      setSelectedCollection(collection);
+    },
+    [setSelectedCollection]
+  );
+
+  const onBackButtonHandler = useCallback(() => {
+    setSelectedCollection(undefined);
+  }, [setSelectedCollection]);
 
   return (
     <>
-      <LanguageSelector />
-      <WalletView />
-      {wallet && <WithConnectedWallet />}
+      <div>
+        <div className={styles.header}>
+          {selectedCollection && <BackButton onPress={onBackButtonHandler} />}
+          <LanguageSelector />
+          <WalletView />
+        </div>
+      </div>
+
+      {wallet && (
+        <>
+          {selectedCollection ? (
+            <WithSelectedCollection collection={selectedCollection} />
+          ) : (
+            <CollectionList onCollectionSelect={onCollectionSelectHandler} />
+          )}
+        </>
+      )}
     </>
   );
 }

@@ -1,9 +1,9 @@
 import { FC, useCallback, useState } from 'react';
 import { Popup } from '../Popup';
 import { useIntl } from 'react-intl';
-import { VoucherEntity } from '../Voucher';
 import { NumberField } from '../NumberField';
 import styles from './SellVoucherPopup.module.scss';
+import { VoucherEntity } from '../../models';
 
 export type SellVoucherPopupProps = Readonly<{
   onPopupSuccess: () => void;

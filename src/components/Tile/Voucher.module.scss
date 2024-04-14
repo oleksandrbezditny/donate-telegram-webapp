@@ -40,18 +40,27 @@
 }
 
 .info {
-  padding: 13px 8px 13px;
+  padding: 2px 16px 2px 16px;
   display: flex;
   flex-direction: column;
+  font-size: 13px;
 }
 
 .infoTitle {
   overflow: hidden;
   align-self: start;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
 }
 
 .infoPrice {
   overflow: hidden;
   display: flex;
   align-items: center;
+}
+
+.container {
+  margin: 16px;
+  width: 50%;
 }
