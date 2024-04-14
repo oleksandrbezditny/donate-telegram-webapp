@@ -12,3 +12,4 @@ export * from './VoucherList';
 export * from './WalletView';
 export * from './WithSelectedCollection';
 export * from './BackButton';
+export * from './WTFPopup';

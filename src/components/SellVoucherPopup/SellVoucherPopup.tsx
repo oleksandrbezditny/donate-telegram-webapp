@@ -37,8 +37,9 @@ export const SellVoucherPopup: FC<SellVoucherPopupProps> = ({
   return (
     <Popup
       title={popupTitle}
-      buttonText={popupButtonTitle}
-      buttonDisabled={true}
+      withProceedButton={true}
+      proceedButtonTitle={popupButtonTitle}
+      proceedButtonDisabled={true}
       onSuccess={onPopupSuccessHandler}
       onReject={onPopupRejectHandler}
       withCancelButton={true}

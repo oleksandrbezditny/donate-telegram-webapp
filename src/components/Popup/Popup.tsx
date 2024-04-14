@@ -4,27 +4,30 @@ import { useIntl } from 'react-intl';
 
 export type PopupProps = Readonly<{
   title: string;
-  buttonText: string;
-  buttonDisabled: boolean;
   children: ReactNode;
   onSuccess: () => void;
   onReject: () => void;
+
+  withProceedButton: boolean;
+  proceedButtonTitle?: string;
+  proceedButtonDisabled: boolean;
   withCancelButton: boolean;
-  cancelTitle?: string;
+  cancelButtonTitle?: string;
 }>;
 
 export const Popup: FC<PopupProps> = ({
   children,
   title,
-  buttonText,
+  proceedButtonTitle,
   onSuccess,
   onReject,
-  buttonDisabled,
+  proceedButtonDisabled,
   withCancelButton,
-  cancelTitle,
+  cancelButtonTitle,
+  withProceedButton,
 }) => {
   const intl = useIntl();
-  const _cancelTitle = cancelTitle ?? intl.formatMessage({ id: 'cancelTitle' });
+  const _cancelTitle = cancelButtonTitle ?? intl.formatMessage({ id: 'cancelTitle' });
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -33,8 +36,8 @@ export const Popup: FC<PopupProps> = ({
   }, []);
 
   return (
-    <div>
-      <div className={styles.root}>
+    <div className={styles.root}>
+      <div>
         <div className={styles.overlay}>
           <div className={isOpen ? styles.popupOpen : styles.popupClosed}>
             <div className={styles.body}>
@@ -43,18 +46,20 @@ export const Popup: FC<PopupProps> = ({
                 <div>
                   <div className={styles.inner}>{children}</div>
                   <div className={styles.buttons}>
-                    <button className={styles.button}>
-                      <div className={styles.buttonInner}>
-                        <div>
-                          <div
-                            className={`${buttonDisabled && styles.buttonDisabled}`}
-                            onClick={onSuccess}
-                          >
-                            {buttonText}
+                    {withProceedButton && (
+                      <button className={styles.button}>
+                        <div className={styles.buttonInner}>
+                          <div>
+                            <div
+                              className={`${proceedButtonDisabled && styles.buttonDisabled}`}
+                              onClick={onSuccess}
+                            >
+                              {proceedButtonTitle}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </button>
+                      </button>
+                    )}
 
                     {withCancelButton && (
                       <button className={styles.buttonCancel}>

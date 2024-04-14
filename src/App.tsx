@@ -5,6 +5,7 @@ import { useTonWallet } from '@tonconnect/ui-react';
 import { useCallback, useState } from 'react';
 import { Collection } from './models/collection.ts';
 import styles from './App.module.scss';
+import { WTFLink } from './components/WTFLink';
 
 function App() {
   const wallet = useTonWallet();
@@ -25,7 +26,7 @@ function App() {
     <>
       <div>
         <div className={styles.header}>
-          {selectedCollection && <BackButton onPress={onBackButtonHandler} />}
+          {selectedCollection ? <BackButton onPress={onBackButtonHandler} /> : <WTFLink />}
           <LanguageSelector />
           <WalletView />
         </div>
