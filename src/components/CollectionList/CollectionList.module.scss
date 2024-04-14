@@ -3,7 +3,11 @@
   align-items: center;
 
   > div:nth-child(2n) {
-    margin-left: 0;
+    padding-left: 8px;
+  }
+
+  > div:nth-child(2n - 1) {
+    padding-right: 8px;
   }
 }
 
