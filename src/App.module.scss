@@ -5,3 +5,17 @@
   height: 72px;
   padding: 0 12px;
 }
+
+.notConnectedWallet {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.greeting {
+  font-size: 40px;
+  font-weight: bold;
+  padding-bottom: 8px;
+  text-align: center;
+}

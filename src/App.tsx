@@ -1,11 +1,12 @@
-import { WalletView } from './components/WalletView/WalletView.tsx';
+import { WalletView } from './components';
 import { CollectionList } from './components';
 import { BackButton, LanguageSelector, WithSelectedCollection } from './components';
 import { useTonWallet } from '@tonconnect/ui-react';
-import { useCallback, useState } from 'react';
+import { FC, useCallback, useState } from 'react';
 import { Collection } from './models/collection.ts';
 import styles from './App.module.scss';
-import { WTFLink } from './components/WTFLink';
+import { WTFLink } from './components';
+import { FormattedMessage } from 'react-intl';
 
 function App() {
   const wallet = useTonWallet();
@@ -28,21 +29,43 @@ function App() {
         <div className={styles.header}>
           {selectedCollection ? <BackButton onPress={onBackButtonHandler} /> : <WTFLink />}
           <LanguageSelector />
-          <WalletView />
+          {wallet && <WalletView />}
         </div>
       </div>
 
+      {!wallet && <WithoutWallet />}
+
       {wallet && (
-        <>
-          {selectedCollection ? (
-            <WithSelectedCollection collection={selectedCollection} />
-          ) : (
-            <CollectionList onCollectionSelect={onCollectionSelectHandler} />
-          )}
-        </>
+        <WithWallet
+          selectedCollection={selectedCollection}
+          onCollectionSelectHandler={onCollectionSelectHandler}
+        />
       )}
     </>
   );
 }
+
+const WithoutWallet: FC = () => (
+  <div className={styles.notConnectedWallet}>
+    <div className={styles.greeting}>
+      <FormattedMessage id="greeting" />
+    </div>
+
+    <WalletView />
+  </div>
+);
+
+const WithWallet: FC<{
+  selectedCollection?: Collection;
+  onCollectionSelectHandler: (collection: Collection) => void;
+}> = ({ selectedCollection, onCollectionSelectHandler }) => (
+  <>
+    {selectedCollection ? (
+      <WithSelectedCollection collection={selectedCollection} />
+    ) : (
+      <CollectionList onCollectionSelect={onCollectionSelectHandler} />
+    )}
+  </>
+);
 
 export default App;

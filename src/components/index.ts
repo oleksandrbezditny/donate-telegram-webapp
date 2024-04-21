@@ -15,3 +15,4 @@ export * from './BackButton';
 export * from './WTFPopup';
 export * from './PurposeButton';
 export * from './CancelSalePopup';
+export * from './WTFLink';
