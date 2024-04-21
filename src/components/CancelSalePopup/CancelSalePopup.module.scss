@@ -1,0 +1,22 @@
+.description {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 14px 16px 13px 16px;
+  background-color: #383838;
+  color: #e6e6e6;
+  text-align: justify;
+  border-radius: 15px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: lighter;
+
+  > p {
+    color: #e6e6e6;
+    font-weight: 600;
+  }
+}

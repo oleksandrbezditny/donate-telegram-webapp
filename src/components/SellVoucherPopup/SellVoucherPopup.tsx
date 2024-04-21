@@ -22,6 +22,7 @@ export const SellVoucherPopup: FC<SellVoucherPopupProps> = ({
   const numberFieldTitle = intl.formatMessage({ id: 'sellVoucherNumberField' });
   const serviceFeeText = intl.formatMessage({ id: 'serviceFee' });
   const creatorRoyaltyText = intl.formatMessage({ id: 'creatorRoyalty' });
+  const transactionFeeText = intl.formatMessage({ id: 'transactionFee' });
   const youReceiveText = intl.formatMessage({ id: 'youReceive' });
 
   const [selectedPrice, setSelectedPrice] = useState<number | undefined>(undefined);
@@ -63,7 +64,7 @@ export const SellVoucherPopup: FC<SellVoucherPopupProps> = ({
             <p>{creatorRoyaltyText}</p> {((selectedPrice ?? 0) * 0.95).toFixed(2)}
           </div>
           <div className={styles.item}>
-            <p>Transaction Fee (REST WILL BE RETURNED):</p> 10
+            <p>{transactionFeeText}</p> 10
           </div>
           <div className={styles.item}>
             <p>{youReceiveText}</p> Something in the future

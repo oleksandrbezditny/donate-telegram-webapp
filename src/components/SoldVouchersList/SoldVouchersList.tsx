@@ -1,7 +1,8 @@
-import { FC, useCallback } from 'react';
+import { FC, useCallback, useState } from 'react';
 import { VoucherList } from '../VoucherList';
 import { VoucherEntity } from '../../models';
 import { Collection } from '../../models/collection.ts';
+import { CancelSalePopup } from '../CancelSalePopup';
 
 const vouchersMock: VoucherEntity[] = [
   {
@@ -31,7 +32,25 @@ export type SoldVoucherListProps = Readonly<{
 }>;
 
 export const SoldVoucherList: FC<SoldVoucherListProps> = () => {
-  const onVoucherSelect = useCallback(() => {}, []);
+  const [cancelSalePopupShown, setCancelSalePopupShown] = useState(false);
+  const onVoucherSelect = useCallback(() => {
+    setCancelSalePopupShown(true);
+  }, []);
 
-  return <VoucherList onVoucherSelect={onVoucherSelect} vouchers={vouchersMock} />;
+  const onRejectHandler = useCallback(() => {
+    setCancelSalePopupShown(false);
+  }, []);
+
+  const onSuccessHandler = useCallback(() => {
+    setCancelSalePopupShown(false);
+  }, []);
+
+  return (
+    <>
+      {cancelSalePopupShown && (
+        <CancelSalePopup onSuccess={onSuccessHandler} onReject={onRejectHandler} />
+      )}
+      <VoucherList onVoucherSelect={onVoucherSelect} vouchers={vouchersMock} />
+    </>
+  );
 };
