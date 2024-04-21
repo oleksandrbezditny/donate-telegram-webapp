@@ -28,7 +28,10 @@ function App() {
       <div>
         <div className={styles.header}>
           <div className={styles.headerContentWrapper}>
-            {selectedCollection ? <BackButton onPress={onBackButtonHandler} /> : <WTFLink />}
+            <div className={styles.backORWtfButton}>
+              {selectedCollection ? <BackButton onPress={onBackButtonHandler} /> : <WTFLink />}
+            </div>
+
             <LanguageSelector />
             {wallet && <WalletView />}
           </div>
