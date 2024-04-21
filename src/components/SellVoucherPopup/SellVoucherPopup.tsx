@@ -37,6 +37,7 @@ export const SellVoucherPopup: FC<SellVoucherPopupProps> = ({
   return (
     <Popup
       title={popupTitle}
+      titleSize="big"
       withProceedButton={true}
       proceedButtonTitle={popupButtonTitle}
       proceedButtonDisabled={true}

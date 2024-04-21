@@ -10,6 +10,7 @@ export const WTFPopup: FC<WTFPopupProps> = ({ onClose }) => {
   return (
     <Popup
       title="WTF?!"
+      titleSize="big"
       onSuccess={onClose}
       onReject={onClose}
       withProceedButton={false}

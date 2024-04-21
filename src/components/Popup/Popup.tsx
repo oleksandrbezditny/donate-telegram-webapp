@@ -4,10 +4,10 @@ import { useIntl } from 'react-intl';
 
 export type PopupProps = Readonly<{
   title: string;
+  titleSize: 'medium' | 'big';
   children: ReactNode;
-  onSuccess: () => void;
-  onReject: () => void;
-
+  onSuccess?: () => void;
+  onReject?: () => void;
   withProceedButton: boolean;
   proceedButtonTitle?: string;
   proceedButtonDisabled: boolean;
@@ -18,6 +18,7 @@ export type PopupProps = Readonly<{
 export const Popup: FC<PopupProps> = ({
   children,
   title,
+  titleSize,
   proceedButtonTitle,
   onSuccess,
   onReject,
@@ -42,7 +43,12 @@ export const Popup: FC<PopupProps> = ({
           <div className={isOpen ? styles.popupOpen : styles.popupClosed}>
             <div className={styles.body}>
               <div className={styles.content}>
-                <div className={styles.title}>{title}</div>
+                <div
+                  className={styles.title}
+                  style={{ fontSize: titleSize === 'big' ? '40px' : '25px' }}
+                >
+                  {title}
+                </div>
                 <div>
                   <div className={styles.inner}>{children}</div>
                   <div className={styles.buttons}>

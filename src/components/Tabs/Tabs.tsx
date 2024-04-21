@@ -1,6 +1,7 @@
 import { FC, ReactNode, useState } from 'react';
 import styles from './Tabs.module.scss';
 import { FormattedMessage } from 'react-intl';
+import { PurposeButton } from '../PurposeButton';
 
 export type TabsProps = Readonly<{
   tabs: {
@@ -29,9 +30,7 @@ export const Tabs: FC<TabsProps> = ({ tabs }) => {
           </li>
         ))}
       </ul>
-      <div className={styles.purposeMessage}>
-        <FormattedMessage id="purpose" />
-      </div>
+      <PurposeButton />
       <div>
         {tabs.map((item, index) => (
           <div

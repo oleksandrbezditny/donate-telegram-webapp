@@ -13,3 +13,4 @@ export * from './WalletView';
 export * from './WithSelectedCollection';
 export * from './BackButton';
 export * from './WTFPopup';
+export * from './PurposeButton';

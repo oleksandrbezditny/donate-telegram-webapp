@@ -1,6 +1,7 @@
 .root {
   color: #e6e6e6;
   z-index: 999;
+  position: relative;
 }
 
 .popupOpen {
@@ -39,7 +40,8 @@
   box-sizing: border-box;
   padding: 16px;
   background-color: #2b2b2b;
-  border-radius: 16px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
   position: relative;
   width: 100%;
 }
