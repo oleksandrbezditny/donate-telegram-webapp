@@ -1,14 +1,14 @@
 import { useEffect, useMemo, useState } from 'react';
 
-export type WrappedLazyOperation<TResult> = Readonly<{
+export type WrappedAsyncOutput<TResult> = Readonly<{
   loading: boolean;
-  result: TResult | undefined;
   error: string;
+  result?: TResult;
 }>;
 
-export const useWrapLazyOperation = <TReturn>(
+export const useWrapAsync = <TReturn>(
   func: () => Promise<TReturn>
-): WrappedLazyOperation<TReturn> => {
+): WrappedAsyncOutput<TReturn> => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [result, setResult] = useState<TReturn | undefined>(undefined);
@@ -20,7 +20,7 @@ export const useWrapLazyOperation = <TReturn>(
         (err) => setError(err)
       )
       .finally(() => setLoading(false));
-  }, []);
+  }, [func]);
 
   return useMemo(
     () =>

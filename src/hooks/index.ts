@@ -1,1 +1,1 @@
-export * from './wrap-lazy';
+export * from './wrap-async';

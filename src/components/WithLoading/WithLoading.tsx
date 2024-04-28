@@ -1,17 +1,17 @@
 import { ReactElement } from 'react';
-import { useWrapLazyOperation } from '../../hooks';
+import { useWrapAsync } from '../../hooks';
 import { Loader } from '../Loader';
 
 export type WithLoadingProps<TReturn = unknown> = Readonly<{
-  resourceRequester: () => Promise<TReturn>;
+  asyncFunc: () => Promise<TReturn>;
   children: (result: TReturn) => ReactElement;
 }>;
 
 export function WithLoading<TReturn>({
-  resourceRequester,
+  asyncFunc,
   children,
 }: WithLoadingProps<TReturn>): ReactElement {
-  const { loading, result } = useWrapLazyOperation(resourceRequester);
+  const { loading, result } = useWrapAsync(asyncFunc);
 
   if (loading) {
     return <Loader display={true} />;

@@ -44,7 +44,7 @@ export const CollectionList: FC<CollectionListProps> = ({ onCollectionSelect }) 
         <FormattedMessage id="collections" />
       </h1>
 
-      <WithLoading resourceRequester={lazyMock}>
+      <WithLoading asyncFunc={lazyMock}>
         {(collections) => (
           <div className={styles.container}>
             {collections.map((collection, index) => (
