@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 export type WrappedLazyOperation<TResult> = Readonly<{
   loading: boolean;
@@ -6,27 +6,29 @@ export type WrappedLazyOperation<TResult> = Readonly<{
   error: string;
 }>;
 
-export const wrapLazyOperation = <TParams, TReturn>(
-  func: (...args: TParams[]) => Promise<TReturn>
-): ((...args: TParams[]) => WrappedLazyOperation<TReturn>) => {
-  return (...args) => {
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
-    const [result, setResult] = useState<TReturn | undefined>(undefined);
+export const useWrapLazyOperation = <TReturn>(
+  func: () => Promise<TReturn>
+): WrappedLazyOperation<TReturn> => {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const [result, setResult] = useState<TReturn | undefined>(undefined);
 
-    setLoading(true);
-
-    func(...args)
+  useEffect(() => {
+    func()
       .then(
         (res) => setResult(res),
         (err) => setError(err)
       )
       .finally(() => setLoading(false));
+  }, []);
 
-    return {
-      loading,
-      result,
-      error,
-    } as const;
-  };
+  return useMemo(
+    () =>
+      ({
+        loading,
+        result,
+        error,
+      }) as const,
+    [loading, result, error]
+  );
 };
